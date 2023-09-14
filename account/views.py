@@ -8,6 +8,7 @@ from rest_framework.response import Response
 
 from .serializers import UserSerializer
 from .models import User
+from .permissions import UserPermission
 
 
 # class UserListCreateAPIView(ListCreateAPIView):
@@ -21,7 +22,7 @@ from .models import User
 
 
 @api_view(http_method_names=['GET', 'POST'])
-@authentication_classes([TokenAuthentication, ])
+@permission_classes([UserPermission, ])
 def user_list_create_api_view(request):
     if request.method == 'GET':
         users = User.objects.all()
