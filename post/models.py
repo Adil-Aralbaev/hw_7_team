@@ -20,10 +20,10 @@ RATINGS = (
 class Post(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
-    image = str
     user = models.ForeignKey(User, on_delete=models.RESTRICT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
     class Meta:
         verbose_name = 'Пост'
@@ -32,6 +32,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    # if __name__ == "__main__":
+
 
 
 class Rating(models.Model):
